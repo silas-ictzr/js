@@ -73,6 +73,11 @@ rest1.numGuests ??= 10;
 ////ilk değer null veya undefined ise o zaman ikinci değeri döndürür onun dışında hep ilk değeri döndürür
 rest2.numGuests ??= 10;
 
+//rest1.owner = rest1.owner && '<ANONYMOUS>';
+//rest2.owner = rest2.owner && '<ANONYMOUS>';
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+
 console.log(rest1);
 console.log(rest2);
 
