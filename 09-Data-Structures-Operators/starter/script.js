@@ -51,7 +51,48 @@ const restaurant = {
 
 //DATA STRUCTURES MODERN OPERATORS AND STRINGS
 
+//LECTURE #109
+
+const rest1 = {
+  name: 'Capri',
+  //numGuests: 20,
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+
+//rest1.numGuests = rest1.numGuests || 10;
+//rest2.numGuests = rest2.numGuests || 10;
+//rest1.numGuests ||= 10;
+//rest2.numGuests ||= 10;
+
+rest1.numGuests ??= 10;
+////ilk değer null veya undefined ise o zaman ikinci değeri döndürür onun dışında hep ilk değeri döndürür
+rest2.numGuests ??= 10;
+
+console.log(rest1);
+console.log(rest2);
+
+/*
+
+//LECTURE #108
+
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect); //ilk değer null veya undefined ise o zaman ikinci değeri döndürür onun dışında hep ilk değeri döndürür
+*/
+
+/*
+
 //LECTURE #107
+
+console.log('---OR---');
 console.log(3 || 'Jonas');
 //or operatörü her türden veri tipini alabilir ilk operanda baktığında true ise diğerine hiç bakmaz ve true döndürür(ilk  operand bool hariç farklı veri tipinde ise ne verildiyse onu döndürür)
 console.log('' || 'Jonas'); //Jonas
@@ -60,11 +101,32 @@ console.log(undefined || null); //null
 
 console.log(undefined || 0 || '' || 'Hello' || 23 || null); //ilk true değer hello olduğu için onu döndürür
 
+restaurant.numGuests = 0;
 const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 //numgest true ise numgest i döndür false ise 10 döndür
 console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('---AND---');
+//false gördüğü ilk değeri yazar OR un tam tersi
+console.log(0 && 'Jonas'); //0
+console.log(7 && 'Jonas'); //Jonas
+console.log('Hello' && 23 && null && 'Jonas'); //null
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+  //ilki direk gelecek ikinci dizi içinde
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+*/
+
 /*
+
 //LECTURE #106
+
 const arr = [1, 2, ...[3, 4]]; // ...[3, 4] ifadesi spread operatörü ile bir dizi genişletme işlemidir. Bu ifade, [3, 4] dizisini elemanlarına ayırarak, 1, 2, 3, 4 şeklinde bir dizi oluşturur. Bu yeni dizi daha sonra arr değişkenine atanır
 
 const [a, b, ...others] = [1, 2, 3, 4, 5];
@@ -99,6 +161,7 @@ restaurant.orderPizza('mushrooms');
 */
 
 /*
+
 //LECTURE #105
 
 //Spread (...)
@@ -153,6 +216,7 @@ console.log(restaurant.name);
 */
 
 /*
+
 //LECTURE #104
 
 // Destructuring Objects
@@ -198,6 +262,7 @@ console.log(o, c);
 */
 
 /*
+
 //LECTURE #103
 
 const arr = [2, 3, 4];
