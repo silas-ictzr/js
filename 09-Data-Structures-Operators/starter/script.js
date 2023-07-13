@@ -48,7 +48,77 @@ const restaurant = {
 
 //DATA STRUCTURES MODERN OPERATORS AND STRINGS
 
+//LECTURE #117
+//MAPS keylerle eşleşmek  için kullandığımız veri yapısı
+//maps de key de temelde dizidir ancak maps de her tür key e sahip olabiliriz
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Lisban, Portugal'));
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegatarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :D')
+  .set(false, 'We are close :(');
+
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('catogaries'));
+rest.delete(2);
+//rest.clear;
+
+const arr = [1, 2];
+rest.set(arr, 'Test');
+rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest);
+console.log(rest.size);
+
+console.log(rest.get(arr));
+
+/*
+
 //LECTURE #116
+//SETS(kümeler )
+//bir kümeden değer alamayız sadece o değerin kümenin içinde olup olmadıdğını öğrenebiliriz değer almka istiyorsak dizi kullanabiliriz
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(ordersSet); //olanı sadece bir defa getirir
+console.log(new Set('Jonas'));
+console.log(ordersSet.size); //3 (kaç çeşit)
+console.log(ordersSet.has('Pizza')); //true (var mı )
+console.log(ordersSet.has('Bread')); //false
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+//ordersSet.clear();
+console.log(ordersSet);
+
+//kümeler yenilenebilir bu yüzden döngülerde kullanabiliriz
+for (const order of ordersSet) console.log(order);
+
+//example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+console.log(new Set('jonasschmedtmann').size);
+*/
 
 /*
 
