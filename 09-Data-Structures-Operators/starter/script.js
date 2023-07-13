@@ -1,10 +1,20 @@
 'use strict';
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0,
+    close: 24,
+  },
+};
 
-// Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
-
-// Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -12,20 +22,7 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  openingHours,
 
   order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
@@ -43,13 +40,233 @@ const restaurant = {
     );
   },
 
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
 };
 
 //DATA STRUCTURES MODERN OPERATORS AND STRINGS
+
+//LECTURE #116
+
+/*
+
+//LECTURE #115
+//CODING CHALLENGE #2
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+//**********************************************************************
+//1
+for (const [a, b] of game.scored.entries()) {
+  console.log(`${a + 1}. golü ${b} attı.`);
+}
+//2
+const xs = Object.values(game.odds);
+let averange = 0;
+for (const x of Object.values(game.odds)) {
+  averange += x;
+}
+console.log((averange /= xs.length));
+
+//3?
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
+*/
+
+/*
+
+//LECTURE #114
+
+const properties = Object.keys(openingHours);
+console.log(properties); ////openinGours da keyi olanları listeler dizi olarak
+
+let openStr = `We are open on ${properties.length} days: `;
+for (const day of properties) {
+  openStr += `${day},`;
+}
+console.log(openStr);
+
+for (const day of Object.keys(openingHours)) {
+  console.log(day); //openinHours da keyi olanları listeler
+}
+
+const values = Object.values(openingHours);
+console.log(values); //openingHours daki value değerlerini dizi içinde getirir
+
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for (const x of entries) {
+  console.log(x);
+}
+
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+*/
+
+/*
+
+//LECTURE #113
+
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+
+//OR
+//hata önler
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+//örnek
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+//*****************************************
+//Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
+
+//Array
+const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+console.log(users[0]?.name ?? 'User array empty');
+//or
+if (users.length > 0) console.log(users[0].name);
+else console.log('user array empty');
+*/
+
+/*
+
+//LECTURE #111
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+  console.log(`i + 1}: ${el}`);
+}
+
+//console.log([...menu.entries()]);
+*/
+
+/*
+
+//LECTURE #110
+//CODING CHALLENGE #1
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+const [players1, players2] = game.players;
+console.log(players1, players2);
+
+const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
+//const [gk, ...fieldPlayers] = players2;
+
+const allPlayers = [...players1, ...players2];
+
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Periscic'];
+
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(team1, draw, team2);
+
+const printGoals = function (...players) {
+  console.log(`${players.length} goals were scored`);
+};
+//printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+//printGoals('Davies', 'Muller');
+printGoals(...game.scored);
+
+team1 < team2 && console.log('Team 1 is more likely to win'); //ilk Kısım doğru olduğundan ikinci kısım konsola yazdırılır (&& operatörü kural)
+team1 > team2 && console.log('Team 2 is more likely to win');
+*/
+
+/*
 
 //LECTURE #109
 
@@ -76,10 +293,11 @@ rest2.numGuests ??= 10;
 //rest1.owner = rest1.owner && '<ANONYMOUS>';
 //rest2.owner = rest2.owner && '<ANONYMOUS>';
 rest1.owner &&= '<ANONYMOUS>';
-rest2.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';// burada kısa devre vardır ilk değer hatalı olduğunda kısa devre yapar  
 
 console.log(rest1);
 console.log(rest2);
+*/
 
 /*
 
@@ -89,6 +307,7 @@ restaurant.numGuests = 0;
 const guests = restaurant.numGuests || 10;
 console.log(guests);
 
+console.log('---??---');
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect); //ilk değer null veya undefined ise o zaman ikinci değeri döndürür onun dışında hep ilk değeri döndürür
 */
