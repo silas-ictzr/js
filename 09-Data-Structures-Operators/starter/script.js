@@ -48,8 +48,226 @@ const restaurant = {
 
 //DATA STRUCTURES MODERN OPERATORS AND STRINGS
 
+//LECTURE #123
+
+console.log('a+very+nice+string'.split('+'));
+console.log('Jonas Schmedtmann'.split(' '));
+
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' '); //join ile arasına boşluk koyup birleştirdik
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+
+  for (const n of names) {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1));
+  }
+  console.log(namesUpper.join(' '));
+};
+capitalizeName('jessica ann smith davis');
+capitalizeName('jonas schmedtmann');
+
+const message = 'Go to gate 23!';
+console.log(message.padStart(20, '+').padEnd(30, '+'));
+console.log('Jonas'.padStart(20, '+').padEnd(30, '+'));
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(64637836));
+console.log(maskCreditCard(43378463864647384));
+console.log(maskCreditCard('33485993847755774747'));
+
+const message2 = 'Bad waether... All Departues Delayed...';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'🛫'.repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);
+/*
+
+//LECTURE #122
+const airline = 'TAP Air Portugal';
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+const passenger = 'jOnAS';
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+const email = 'hello@jonas.io';
+const loginEmail = ' Hello@Jonas.Io \n';
+
+const lowerEmail = loginEmail.toLocaleLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+//OR
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+//replace
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const annuncement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+
+console.log(annuncement.replace('door', 'gate')); //ilk gördüğü door u gate yapar
+console.log(annuncement.replaceAll('door', 'gate')); // bütün door ları gate yapar
+console.log(annuncement.replace(/door/g, 'gate')); //bütün door ları gate yapar
+
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320')); //true
+console.log(plane.includes('Boeing')); //false
+console.log(plane.startsWith('Air')); //true
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the NEW ARirbus family');
+}
+
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase(); //bunu kullanmazsak eğer ilk çağırdığımızda knife k si büyük olduğu için Welcome aboard! gelir.
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome aboard!');
+  }
+};
+
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snack and a gun for protection');
+*/
+
+/*
+
+//LECTURE #121
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+
+console.log(airline.length);
+console.log('B737'.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('portugal')); // böyle -1 , P ile yazarsak 8 döndürür harfe duyarlı
+
+console.log(airline.slice(4)); // 4 başlama indeksidir (Air Portugal)
+console.log(airline.slice(4, 7)); // 4 başlangıç dahil 7 bitiş dahil değil
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // +1 i ekleme sebebimiz sondaki kelimeyi başındaki boşlukla almasın diye
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  //B and E middle seat
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat');
+  else console.log('You got luck');
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+console.log(new String('jonas'));
+console.log(typeof new String('jonas')); // bir nesne (object) olmuştur
+//?
+console.log(typeof new String('jonas').slice(1)); // string
+*/
+
+/*
+//LECTURE #120
+//CODING CHALLENGE #3
+const gameEvents = new Map([
+  [17, 'GOAL'],
+  [36, 'Substitution'],
+  [47, 'GOAL'],
+  [61, 'Substitution'],
+  [64, 'Yello Card'],
+  [69, 'Red Card'],
+  [70, 'Substitution'],
+  [72, 'Substitution'],
+  [76, 'GOAL'],
+  [80, 'GOAL'],
+  [92, 'Yellow Card'],
+]);
+
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+//*************************************************
+gameEvents.delete(64);
+//*************************************************
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF] ${min}: ${event}`);
+}
+*/
+
+/*
+
+//LECTURE #118
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Try again!'],
+]);
+console.log(question);
+
+//object den map e çevirme
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+const answer = Number(prompt('Your answer'));
+console.log(answer);
+const correct = question.get('correct');
+
+if (answer === correct) {
+  console.log(question.get(true));
+} else console.log(question.get(false));
+//OR
+console.log(question.get(question.get('correct') === answer));
+
+//map i dizi ye çevirme
+console.log([...question]); //1
+console.log([...question.entries()]); //2
+// 1 ve 2 sonuç aynı olur
+console.log([...question.keys()]);
+console.log([...question.values()]);
+*/
+
+/*
+
 //LECTURE #117
-//MAPS keylerle eşleşmek  için kullandığımız veri yapısı
+//MAPS (keylerle eşleşmek  için kullandığımız veri yapısı)
 //maps de key de temelde dizidir ancak maps de her tür key e sahip olabiliriz
 
 const rest = new Map();
@@ -76,17 +294,18 @@ rest.delete(2);
 //rest.clear;
 
 const arr = [1, 2];
-rest.set(arr, 'Test');
+rest.set(arr, 'Test'); // arr yerine [1, 2] yazınca console.log(rest); undefined olur o yüzden değişkene atarız
 rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest.get('h1'));
 console.log(rest);
 console.log(rest.size);
-
 console.log(rest.get(arr));
+*/
 
 /*
 
 //LECTURE #116
-//SETS(kümeler )
+//SETS(kümeler)
 //bir kümeden değer alamayız sadece o değerin kümenin içinde olup olmadıdğını öğrenebiliriz değer almka istiyorsak dizi kullanabiliriz
 const ordersSet = new Set([
   'Pasta',
