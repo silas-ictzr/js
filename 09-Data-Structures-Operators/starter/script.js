@@ -397,7 +397,7 @@ for (const x of Object.values(game.odds)) {
 }
 console.log((averange /= xs.length));
 
-//3?
+//3 ?
 for (const [team, odd] of Object.entries(game.odds)) {
   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
   console.log(`Odd of ${teamStr} ${odd}`);
